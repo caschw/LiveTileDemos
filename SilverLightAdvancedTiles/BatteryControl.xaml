@@ -1,0 +1,56 @@
+﻿<UserControl
+    x:Class="SilverLightAdvancedTiles.BatteryControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LiveTiles"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="400"
+    d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+            <Path Data="M10,5L10,90 50,90 50,5" Stretch="Uniform" Fill="Black"  Width="200" Height="307" >
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <TranslateTransform X="-100" Y="-146" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Path Name="BatteryLevelPath" Data="M10,5L10,90 50,90 50,5" Stretch="Uniform" Fill="#FF34E834" Margin="15,20,15,15" Width="200" Height="307" RenderTransformOrigin="0,0">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="{Binding Path=BatteryLevel, ElementName=BatteryControl}" />
+                            <RotateTransform Angle="180" CenterX="28" CenterY="71"></RotateTransform>
+                            <TranslateTransform X="30" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Path Name="BatteryOutlinePath" Data="M0,0L0,95 12.5,95 12.5,100 37.5,100 37.5,95 50,95 50,0 0,0 M5,5L5,90 45,90 45,5 5,5" Stretch="Uniform" Fill="White" Width="200" Height="360" RenderTransformOrigin="0.25,0.25" Stroke="Black" StrokeThickness="1">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <RotateTransform Angle="180" />
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Canvas>
+        <TextBlock Name="BatteryLevelBlockShadow" Foreground="LightGray" Text="88%" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="100"> 
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <TransformGroup.Children>
+                        <TranslateTransform X="3" Y="3"/>
+                    </TransformGroup.Children>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Name="BatteryLevelBlock" Foreground="Blue" Text="88%" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="100" />
+    </Grid>
+</UserControl>
